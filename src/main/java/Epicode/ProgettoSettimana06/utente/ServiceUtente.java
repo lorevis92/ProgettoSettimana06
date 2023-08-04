@@ -12,7 +12,11 @@ import org.springframework.stereotype.Service;
 import Epicode.ProgettoSettimana06.exceptions.BadRequestException;
 import Epicode.ProgettoSettimana06.exceptions.NotFoundException;
 import Epicode.ProgettoSettimana06.utente.payloadUtente.PayloadRichiestaUtente;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Service
 public class ServiceUtente {
 	private final RepositoryUtente repoUtente;

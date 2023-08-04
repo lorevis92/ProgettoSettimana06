@@ -12,15 +12,20 @@ import org.springframework.stereotype.Service;
 import Epicode.ProgettoSettimana06.dispositivo.payloadDispositivo.PayloadRichiestaAggiornamentoDispositivo;
 import Epicode.ProgettoSettimana06.dispositivo.payloadDispositivo.PayloadRichiestaCreazioneDispositivo;
 import Epicode.ProgettoSettimana06.exceptions.NotFoundException;
+import Epicode.ProgettoSettimana06.utente.ServiceUtente;
 
 @Service
 public class ServiceDispositivo {
 	private final RepositoryDispositivo repoDispositivo;
+	@Autowired
+	private ServiceUtente serviceUtente;
 
 	@Autowired
 	public ServiceDispositivo(RepositoryDispositivo repoDispositivo) {
 		this.repoDispositivo = repoDispositivo;
 	}
+
+
 
 	// Quando registro un dispositivo voglio che abbia solo la tipologia
 	public Dispositivo create(PayloadRichiestaCreazioneDispositivo body) {
@@ -42,8 +47,8 @@ public class ServiceDispositivo {
 	public Dispositivo findByIdAndUpdate(UUID id, PayloadRichiestaAggiornamentoDispositivo body)
 			throws NotFoundException {
 		Dispositivo found = this.findById(id);
-		// found.getUtente();
-		found.getStato();
+		found.setUtente(serviceUtente.findById(body.getUtente_id()));
+		found.setStato(body.getStato());
 
 		return repoDispositivo.save(found);
 	}
