@@ -3,6 +3,7 @@ package Epicode.ProgettoSettimana06.dispositivo;
 import java.util.UUID;
 
 import Epicode.ProgettoSettimana06.dispositivo.enu.Stato;
+import Epicode.ProgettoSettimana06.dispositivo.enu.Tipologia;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -22,13 +23,13 @@ public class Dispositivo {
 	private UUID id;
 //	@ManyToOne
 //	private Utente utente;
-//	@Enumerated(jakarta.persistence.EnumType.STRING)
-//	private Tipologia tipologia;
-	private String tipologia;
+	@Enumerated(jakarta.persistence.EnumType.STRING)
+	private Tipologia tipologia;
+//	private String tipologia;
 	@Enumerated(EnumType.STRING)
 	private Stato stato = Stato.DISPONIBILE;
 
-	public Dispositivo(String tipologia) {
+	public Dispositivo(Tipologia tipologia) {
 		this.tipologia = tipologia;
 	}
 

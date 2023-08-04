@@ -1,10 +1,9 @@
 package Epicode.ProgettoSettimana06.dispositivo.payloadDispositivo;
 
-import lombok.AllArgsConstructor;
+import Epicode.ProgettoSettimana06.dispositivo.enu.Tipologia;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
 public class PayloadRichiestaCreazioneDispositivo {
-	private String tipologia;
+	private Tipologia tipologia;
 }

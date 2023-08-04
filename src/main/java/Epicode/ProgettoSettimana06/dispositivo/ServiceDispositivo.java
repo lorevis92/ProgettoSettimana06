@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import Epicode.ProgettoSettimana06.dispositivo.payloadDispositivo.PayloadRichiestaAggiornamentoDispositivo;
 import Epicode.ProgettoSettimana06.dispositivo.payloadDispositivo.PayloadRichiestaCreazioneDispositivo;
 import Epicode.ProgettoSettimana06.exceptions.NotFoundException;
 
@@ -38,17 +39,17 @@ public class ServiceDispositivo {
 		return repoDispositivo.findById(id).orElseThrow(() -> new NotFoundException(id));
 	}
 
-//	public Dispositivo findByIdAndUpdate(UUID id, PayloadRichiestaAggiornamentoDispositivo body)
-//			throws NotFoundException {
-//		Dispositivo found = this.findById(id);
-//		found.getUtente();
-//		found.getStato();
-//
-//		return repoDispositivo.save(found);
-//	}
+	public Dispositivo findByIdAndUpdate(UUID id, PayloadRichiestaAggiornamentoDispositivo body)
+			throws NotFoundException {
+		Dispositivo found = this.findById(id);
+		// found.getUtente();
+		found.getStato();
 
-//	public void findByIdAndDelete(UUID id) throws NotFoundException {
-//		Dispositivo found = this.findById(id);
-//		repoDispositivo.delete(found);
-//	}
+		return repoDispositivo.save(found);
+	}
+
+	public void findByIdAndDelete(UUID id) throws NotFoundException {
+		Dispositivo found = this.findById(id);
+		repoDispositivo.delete(found);
+	}
 }
