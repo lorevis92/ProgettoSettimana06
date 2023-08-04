@@ -21,8 +21,10 @@ public class ServiceDispositivo {
 		this.repoDispositivo = repoDispositivo;
 	}
 
+	// Quando registro un dispositivo voglio che abbia solo la tipologia
 	public Dispositivo create(PayloadRichiestaCreazioneDispositivo body) {
 		Dispositivo nuovoDispositivo = new Dispositivo(body.getTipologia());
+		System.out.println(nuovoDispositivo);
 		return repoDispositivo.save(nuovoDispositivo);
 	}
 
@@ -45,8 +47,8 @@ public class ServiceDispositivo {
 //		return repoDispositivo.save(found);
 //	}
 
-	public void findByIdAndDelete(UUID id) throws NotFoundException {
-		Dispositivo found = this.findById(id);
-		repoDispositivo.delete(found);
-	}
+//	public void findByIdAndDelete(UUID id) throws NotFoundException {
+//		Dispositivo found = this.findById(id);
+//		repoDispositivo.delete(found);
+//	}
 }
